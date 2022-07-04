@@ -219,11 +219,18 @@ func (ipt *IPTables) DeleteIfExists(table, chain string, rulespec ...string) err
 	return err
 }
 
-// List rules in specified table/chain
+// rules in specified table/chain
 func (ipt *IPTables) List(table, chain string) ([]string, error) {
 	args := []string{"-t", table, "-S", chain}
 	return ipt.executeList(args)
 }
+
+// rules in specified table/chain with custom args
+func (ipt *IPTables) List(table, chain string) ([]string, error) {
+	args := []string{"-nvL", chain}
+	return ipt.executeList(args)
+}
+
 
 // List rules (with counters) in specified table/chain
 func (ipt *IPTables) ListWithCounters(table, chain string) ([]string, error) {
