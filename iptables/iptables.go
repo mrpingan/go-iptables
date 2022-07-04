@@ -226,7 +226,7 @@ func (ipt *IPTables) List(table, chain string) ([]string, error) {
 }
 
 // rules in specified table/chain with custom args
-func (ipt *IPTables) List(table, chain string) ([]string, error) {
+func (ipt *IPTables) ListCustomChain(table, chain string) ([]string, error) {
 	args := []string{"-nvL", chain}
 	return ipt.executeList(args)
 }
